@@ -1,0 +1,7 @@
+.search-result-list > li {
+    list-style-type: none;
+}
+
+.search-result-list > li > i {
+    color: green;
+}

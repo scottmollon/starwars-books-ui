@@ -1,0 +1,21 @@
+
+@media (min-width: 1200px) {
+    .container{
+        width: 80%;
+    }
+}
+
+.poweredby {
+    background-color: lightgrey;
+    margin: 0px;
+    padding: 5px;
+}
+
+body {
+    background-image: url('../img/space7.jpg');
+}
+
+.white-text {
+    color: white;
+    text-shadow: 1px 1px #000000;
+}

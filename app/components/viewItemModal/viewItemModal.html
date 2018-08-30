@@ -1,0 +1,27 @@
+<!-- Modal -->
+<div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel">{{ item.title }}</h4>
+    <div ng-if="item.subtitle">
+        {{ item.subtitle }}
+    </div>
+</div>
+<div class="modal-body">
+    <table>
+        <tr>
+            <td><span ng-if="item.author">By {{ item.author }}</span></td>
+        </tr>
+        <tr>
+            <td><a ng-href="{{ item.link }}" ng-show="item.link" target="_blank"><i>View on Google Books</i></a></td>
+        </tr>
+        <tr>
+            <td><p><span ng-bind-html='item.body | limitTo: expand ? item.body.length : 500'></span><span ng-show='!expand && item.body.length > 500'> ...</span></p>
+                    
+                    <a href='' class="pull-right" ng-show="!expand && item.body.length > 500" ng-click="expand=true">more...</a>
+                    <a href='' class="pull-right" ng-show="expand" ng-click="expand=false">less...</a></td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+</div>
+    

@@ -1,0 +1,21 @@
+.checklist-table {
+    width: 100%;
+    
+}
+
+.era-table {
+    background-color: black;
+}
+
+.movie-table {
+    background-color: lightgrey;
+}
+
+.book-table {
+    background-color: white;
+}
+
+th {
+    background-color: transparent;
+    color: white;
+}

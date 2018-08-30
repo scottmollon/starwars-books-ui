@@ -1,0 +1,59 @@
+<li ng-class="item.formats.itemStyle">
+    
+    <div class="timeline-badge" ng-class="item.formats.badge"><i class="fa fa-lg" ng-class="item.formats.icon"></i></div>
+  
+    <div class="timeline-panel" ng-class="item.formats.panelStyle">
+        <div class="row">
+            
+            <div class="col-lg-4" ng-if="item.formats.panelStyle != 'era-panel'" >
+                <img class="img-responsive shadow-drop hidden-sm hidden-xs" ng-src="{{ item.image }}" />
+                <div class="hidden-m hidden-lg small-image-container" ng-click="$parent.$parent.viewItem(item)">
+                    <img class="img-responsive shadow-drop" ng-src="{{ item.image }}"  />
+                    <div class="tap-me"><span class="bold-me">&nbsp;Info&nbsp;<i class="fa fa-lg fa-hand-o-left"></i>&nbsp;</span></div>
+                </div>
+            </div>
+            
+            <div class="col-lg-2" ng-if="item.formats.panelStyle === 'era-panel'"></div>
+            
+            <div class="col-lg-8 hidden-sm hidden-xs">
+                <div class="timeline-heading">
+                    <h3 ng-class="item.formats.panelStyle == 'era-panel' ? 'era-title text-center' : 'timeline-title'">{{ item.title }}</h3>
+                    <p ng-show="item.subtitle != ''" ng-class="item.formats.panelStyle == 'era-panel' ? 'era-title text-center' : ''"><small> {{ item.subtitle }} </small></p>
+                    <p ng-show="item.type=='book'"> by {{ item.author }}</p>
+                    <a ng-href="{{ item.link }}" ng-show="item.link" target="_blank"><i>View on Google Books</i></a>
+                </div>
+                
+                <div class="timeline-body" ng-if="item.formats.panelStyle != 'era-panel'">
+                    
+                    <p><span ng-bind-html='item.body | limitTo: expand ? item.body.length : 500'></span><span ng-show='!expand && item.body.length > 500'> ...</span></p>
+                    
+                    <a href='' class="pull-right" ng-show="!expand && item.body.length > 500" ng-click="expand=true">more...</a>
+                    <a href='' class="pull-right" ng-show="expand" ng-click="expand=false">less...</a>
+                    <hr>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="add-buttons" ng-show="item.formats.panelStyle != 'movie-panel' && $parent.isAdmin">
+            <button class="add-button add-button-above btn" ng-click="$parent.addItem($parent.$index, 'above')">
+                <img src="assets/img/add-above.jpg"/>
+            </button>
+            <br/>
+            <button class="add-button add-button-below btn" ng-click="$parent.addItem($parent.$index, 'below')">
+                <img src="assets/img/add-below.jpg"/>
+            </button>
+        </div>
+        
+        <div class="add-buttons-movie" ng-show="item.formats.panelStyle == 'movie-panel' && $parent.isAdmin">
+            <button class="add-button-movie add-button-above btn"  ng-click="$parent.addItem($parent.$index, 'above')">
+                <img src="assets/img/add-above.jpg"/>
+            </button>
+            <br/>
+            <button class="add-button-movie add-button-below btn" ng-click="$parent.addItem($parent.$index, 'below')">
+                <img src="assets/img/add-below.jpg"/>
+            </button>
+        </div>
+    </div>
+    
+</li>

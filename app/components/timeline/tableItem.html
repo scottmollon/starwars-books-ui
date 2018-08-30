@@ -1,0 +1,10 @@
+<td ng-class="item.formats.panelStyle == 'era-panel' ? 'era-title era-table text-center' : (item.formats.panelStyle == 'movie-panel' ? 'movie-table' : 'book-table')"><span ng-show="item.formats.icon !== ''"<i class="fa fa-circle-o fa-lg" aria-hidden="true"></i></td>
+<td ng-class="item.formats.panelStyle == 'era-panel' ? 'era-title era-table text-center' : (item.formats.panelStyle == 'movie-panel' ? 'movie-table' : 'book-table')"><i class="fa fa-lg" ng-class="item.formats.icon"></i></td>
+<td ng-class="item.formats.panelStyle == 'era-panel' ? 'era-title era-table text-center' : (item.formats.panelStyle == 'movie-panel' ? 'movie-table' : 'book-table')"><b>{{ item.title }}</b> <br> {{ item.subtitle }}</td>
+<td ng-class="item.formats.panelStyle == 'era-panel' ? 'era-title era-table text-center' : (item.formats.panelStyle == 'movie-panel' ? 'movie-table' : 'book-table')">{{ item.author }}</td>
+<td ng-class="item.formats.panelStyle == 'era-panel' ? 'era-title era-table text-center' : (item.formats.panelStyle == 'movie-panel' ? 'movie-table' : 'book-table')">
+    <p><span ng-bind-html='item.body | limitTo: expand ? item.body.length : 500'></span><span ng-show='!expand && item.body.length > 500'> ...</span></p>
+
+                <a href='' class="pull-right" ng-show="!expand && item.body.length > 500" ng-click="expand=true">more...</a>
+                <a href='' class="pull-right" ng-show="expand" ng-click="expand=false">less...</a>
+</td>

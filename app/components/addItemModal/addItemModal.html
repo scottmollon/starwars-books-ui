@@ -1,0 +1,51 @@
+<!-- Modal -->
+<div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel">Add New Item</h4>
+</div>
+<div class="modal-body">
+    <table class="table">
+        <tr>
+            <td><label>Type: </label></td>
+            <td><select class='form-control' ng-model="selectedNewType" ng-options="t for t in types"></select></td>
+        </tr>
+        <tr>
+            <td><label>Canon: </label></td>
+            <td><select class='form-control' ng-model="selectedNewCanon" ng-options="c for c in canons"></select></td>
+        </tr>
+        <tr>
+            <td><label>Title: </label></td>
+            <td>
+                <div ng-show="selectedNewType !== 'book'"><input class='form-control' type="text" ng-model='newTitle'/></div>
+                <div ng-show="selectedNewType === 'book'">
+                    <div class="input-group">
+                        <input class='form-control' type="text" ng-model='searchTitle'/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="search()">Find</button>
+                        </span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr ng-show="selectedNewType === 'book' && searchResults.length > 0">
+            <td colspan="2">
+                <ul class="search-result-list" ng-repeat="result in searchResults">
+                    <li><i ng-show="result.selected" class="fa fa-check-circle green" aria-hidden="true"></i>
+                        <a href='' ng-click='selectResult($index)'><b>{{ result.volumeInfo.title }}</b> <span ng-show="result.volumeInfo.authors.length > 0"> by {{ result.volumeInfo.authors.join(', ') }}</span></a></li>
+                </ul>
+            </td>
+        </tr>
+        <tr ng-show='selectedNewType !== "book"'>
+            <td><label>Subtitle: </label></td>
+            <td><input class='form-control' type="text" ng-model='newSubtitle'/></td>
+        </tr>
+        <tr ng-show='selectedNewType == "movie"'>
+            <td><label>Body: </label></td>
+            <td><textarea class='form-control' rows="12" ng-model='newBody'></textarea></td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+    <button type="button" class="btn btn-primary" ng-click="add()">Add</button>
+</div>
+    
